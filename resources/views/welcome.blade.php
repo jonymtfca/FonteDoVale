@@ -271,7 +271,7 @@
                 <div class="col-lg-6 menu-item isotope-item filter-{{ $m->type }}">
                     <img src="{{ asset('storage/food/'.$m->path)  }}" class="menu-img" alt="">
                     <div class="menu-content">
-                        <a href="">{{ $m->name_pt }}</a><span>{{ $m->half_price }} / {{ $m->price }}</span>
+                        <a href="">{{ $m->name_pt }}</a><span>@if($m->half_price != null) {{ $m->half_price }} / @endif {{ $m->price }}</span>
                     </div>
                     <div class="menu-ingredients">
                         {{ $m->ingredients_pt }}

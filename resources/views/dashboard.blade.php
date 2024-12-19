@@ -124,7 +124,7 @@
 
                                 <!-- Price Section -->
                                 <div class="font-light text-white flex-initial px-5 min-w-[150px]">
-                                    {{ $f->half_price }} / {{ $f->price }}
+                                    @if($f->half_price != null) {{ $f->half_price }} / @endif {{ $f->price }}
                                 </div>
 
                                 <!-- Edit Icon Section -->
