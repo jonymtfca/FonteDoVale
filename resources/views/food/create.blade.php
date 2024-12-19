@@ -22,6 +22,18 @@
 
             </header>
 
+            <div class="w-full text-center text-red-500">
+                @if ($errors->any())
+                    <div class="">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+            </div>
+
             <x-forms.form method="POST" action="/food" enctype="multipart/form-data">
 
                 <div class="columns-3 flex space-x-4 items-center">
@@ -46,13 +58,13 @@
 
                     <div class="w-full">
                         <x-input-label for="name_pt" :value="__('Nome em PT')" />
-                        <x-text-input id="name_pt" name="name_pt" type="text" class="mt-1 block w-full"  required autofocus autocomplete="name_pt" />
+                        <x-text-input id="name_pt" name="name_pt" type="text" class="mt-1 block w-full" :value="old('name_pt')" required autofocus autocomplete="name_pt" />
                         <x-input-error class="mt-2" :messages="$errors->get('name_pt')" />
                     </div>
 
                     <div class="w-full">
                         <x-input-label for="name_en" :value="__('Nome em EN')" />
-                        <x-text-input id="name_en" name="name_en" type="text" class="mt-1 block w-full" required autofocus autocomplete="name_en" />
+                        <x-text-input id="name_en" name="name_en" type="text" class="mt-1 block w-full" :value="old('name_en')" required autofocus autocomplete="name_en" />
                         <x-input-error class="mt-2" :messages="$errors->get('name_en')" />
                     </div>
                 </div>
@@ -61,13 +73,13 @@
 
                     <div class="w-full">
                         <x-input-label for="ingredients_pt" :value="__('Ingredientes em PT')" />
-                        <x-text-input id="ingredients_pt" name="ingredients_pt" type="text" class="mt-1 block w-full"  required autofocus autocomplete="ingredients_pt" />
+                        <x-text-input id="ingredients_pt" name="ingredients_pt" type="text" class="mt-1 block w-full" :value="old('ingredients_pt')" required autofocus autocomplete="ingredients_pt" />
                         <x-input-error class="mt-2" :messages="$errors->get('ingredients_pt')" />
                     </div>
 
                     <div class="w-full">
                         <x-input-label for="ingredients_en" :value="__('Ingredientes em EN')" />
-                        <x-text-input id="ingredients_en" name="ingredients_en" type="text" class="mt-1 block w-full"  required autofocus autocomplete="ingredients_en" />
+                        <x-text-input id="ingredients_en" name="ingredients_en" type="text" class="mt-1 block w-full" :value="old('ingredients_en')" required autofocus autocomplete="ingredients_en" />
                         <x-input-error class="mt-2" :messages="$errors->get('ingredients_en')" />
                     </div>
 
@@ -77,30 +89,30 @@
 
                     <div class="w-full">
                         <x-input-label for="half_price" :value="__('Preço meia dose')" />
-                        <x-text-input id="half_price" name="half_price" type="text" class="mt-1 block w-full"  autofocus autocomplete="half_price" />
+                        <x-text-input id="half_price" name="half_price" type="text" class="mt-1 block w-full" :value="old('half_price')" autofocus autocomplete="half_price" />
                         <x-input-error class="mt-2" :messages="$errors->get('half_price')" />
 
                     </div>
 
                     <div class="w-full">
                         <x-input-label for="price" :value="__('Preço dose')" />
-                        <x-text-input id="price" name="price" type="text" class="mt-1 block w-full"  required autofocus autocomplete="price" />
+                        <x-text-input id="price" name="price" type="text" class="mt-1 block w-full" :value="old('price')" required autofocus autocomplete="price" />
                         <x-input-error class="mt-2" :messages="$errors->get('price')" />
                     </div>
 
                     <div class="w-full">
-                        <x-input-label for="price" :value="__('Tipo')" />
-                        <x-forms.select label="" name="category">
-                            <option value="entrada">Entrada</option>
-                            <option value="principal">Prato Principal</option>
-                            <option value="sobremesa">Sobremesa</option>
+                        <x-input-label for="type" :value="__('Tipo')"  />
+                        <x-forms.select label="" name="type" :value="old('type')">
+                            <option value="1">Entrada</option>
+                            <option value="2">Prato Principal</option>
+                            <option value="3">Sobremesa</option>
                         </x-forms.select>
 
                     </div>
 
                     <div class="w-full items-center text-center">
                         <x-input-label for="is_menu" :value="__('Apenas serviço à carta')" />
-                        <x-text-input id="is_menu" name="is_menu" type="checkbox" class="items-center size-6 mt-4"  autofocus autocomplete="is_menu" />
+                        <x-text-input id="is_menu" name="is_menu" type="checkbox" class="items-center size-6 mt-4" :value="old('is_menu')" autofocus autocomplete="is_menu" />
                         <x-input-error class="mt-2" :messages="$errors->get('is_menu')" />
                     </div>
 

@@ -48,6 +48,8 @@ class FoodController extends Controller
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
         ]);
 
+//        return $attributes;
+
         $path = $request->file('image')->store('/food');
 //        dd($path, substr($path, 5));
 
