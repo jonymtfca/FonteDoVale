@@ -10,6 +10,7 @@ class Food extends Model
     use HasFactory;
 
     protected $casts = [
-        'date' => 'datetime'
+        'date' => 'datetime',
+        'is_menu' => 'boolean',
     ];
 }

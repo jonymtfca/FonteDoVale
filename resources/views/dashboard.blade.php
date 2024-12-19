@@ -22,7 +22,7 @@
                                 id="search"
                                 name="q"
                                 type="text"
-                                class="w-full "
+                                class="w-full mt-4"
                                 :value="old('q', $q)"
                             />
                             <x-input-error class="mt-2" :messages="$errors->get('q')" />
@@ -30,18 +30,58 @@
 
                         <!-- Remaining Columns (Each 1/6) -->
                         <div class="basis-1/6 p-4">
-                            <div class="w-full items-center text-center">
-                                <x-input-label for="is_menu" :value="__('Apenas Menu')" />
-                                <x-text-input id="is_menu" name="is_menu" type="checkbox" class="items-center size-6 mt-4"  autofocus autocomplete="is_menu" />
-                                <x-input-error class="mt-2" :messages="$errors->get('is_menu')" />
+                            <div class="flex items-center mb-4 mt-7">
+                                <input id="default-checkbox" @if($is_menu) checked @endif name="is_menu" type="checkbox" value="" class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Apenas menú</label>
                             </div>
+                            <div class="flex items-center mb-4 mt-2">
+                                <input id="default-checkbox" @if($dates) checked @endif name="dates" type="checkbox" value="" class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Apenas com data</label>
+                            </div>
+{{--                            <div class="w-full items-center text-center">--}}
+{{--                                <x-input-label for="is_menu" :value="__('Apenas Menu')" />--}}
+{{--                                <x-text-input id="is_menu" name="is_menu" type="checkbox" class="items-center size-6 mt-4" :value="old('is_menu', $is_menu)" autofocus autocomplete="is_menu" />--}}
+{{--                                <x-input-error class="mt-2" :messages="$errors->get('is_menu')" />--}}
+{{--                            </div>--}}
                         </div>
-                        <div class="basis-1/6 p-4">
-                            <div class="w-full items-center text-center">
-                                <x-input-label for="dates" :value="__('Pratos da semana')" />
-                                <x-text-input id="is_menu" name="dates" type="checkbox" class="items-center size-6 mt-4"  autofocus autocomplete="is_menu" />
-                                <x-input-error class="mt-2" :messages="$errors->get('is_menu')" />
+                        <div class="basis-1/6 p-4 text-center">
+
+                            <div class="flex items-center mb-4 mt-3">
+                                <input id="default-checkbox"
+                                       class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                       type="checkbox"
+                                       value="1"
+                                       name="type[]"
+                                        {{ in_array(1, request('type', [])) ? 'checked' : '' }}
+                                >
+                                <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Entrada</label>
                             </div>
+                            <div class="flex items-center mb-4 mt-2">
+                                <input id="default-checkbox"
+                                       class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                       type="checkbox"
+                                       value="2"
+                                       name="type[]"
+                                       {{ in_array(2, request('type', [])) ? 'checked' : '' }}
+                                >
+                                <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Prato Principal</label>
+                            </div>
+                            <div class="flex items-center mb-4 mt-2">
+                                <input id="default-checkbox"
+                                       class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                       type="checkbox"
+                                       value="3"
+                                       name="type[]"
+                                    {{ in_array(3, request('type', [])) ? 'checked' : '' }}
+                                >
+                                <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Sobremesa</label>
+                            </div>
+
+{{--                            <div class="w-full items-center text-center">--}}
+{{--                                <x-input-label for="dates" :value="__('Pratos da semana')" />--}}
+{{--                                <x-text-input id="dates" name="dates" type="checkbox" class="items-center size-6 mt-4" :value="old('dates', $dates)" autofocus autocomplete="is_menu" />--}}
+{{--                                <x-input-error class="mt-2" :messages="$errors->get('is_menu')" />--}}
+{{--                            </div>--}}
                         </div>
                         <div class="basis-1/6 p-4">
                             <!-- Create Section (20%) -->
@@ -52,7 +92,7 @@
                             </div></div>
                     </div>
 
-                    <div class="columns-2 bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="w-full text-white">
                             <!-- Submit Button -->
                             <button
@@ -62,15 +102,7 @@
                                 <i class="bi bi-search"></i> Pesquisar
                             </button>
                         </div>
-                        <div class="w-full text-white">
-                            <!-- Clear Button -->
-                            <a
-                                onclick="ClearFilters()"
-                                class="px-4 py-3 text-white rounded-lg hover:text-blue-600"
-                            >
-                                <i class="bi bi-trash"></i> Limpar pesquisa
-                            </a>
-                        </div>
+
                     </div>
 
                 </div>

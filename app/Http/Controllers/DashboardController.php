@@ -19,7 +19,9 @@ class DashboardController extends Controller
 //        return view('dashboard');
         return view('dashboard', [
             'food' => $food,
-            'q' => ""
+            'q' => "",
+            'is_menu' => "",
+            'dates' => ""
         ]);
     }
 
@@ -31,14 +33,29 @@ class DashboardController extends Controller
 //        return $request->all();
 
         $food = Food::query()
-            ->where('name_pt', 'LIKE', '%'.request('q').'%')
+            ->when(request('q'), function ($query) {
+                $query->where('name_pt', 'LIKE', '%' . request('q') . '%');
+            })
+            ->when(request()->has('is_menu'), function ($query) {
+                $query->where('is_menu', true);
+            })
+            ->when(request()->has('dates'), function ($query) {
+                $query->whereNotNull('date');
+            })
+            ->when($request->filled('type'), function ($query) use ($request) {
+                $query->whereIn('type', $request->input('type'));
+            })
             ->orderBy('created_at', 'desc')
             ->get();
 
-//        return view('dashboard');
+
+//        return $request->has('is_menu');
+
         return view('dashboard', [
             'food' => $food,
-            'q' => request('q')
+            'q' => request('q'),
+            'is_menu' => $request->has('is_menu') ? "on": "",
+            'dates' => $request->has('dates')? "on": ""
         ]);
     }
 
