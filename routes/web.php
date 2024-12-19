@@ -71,7 +71,7 @@ Route::post('/reservation', function () {
 //    return $atributes;
 
 
-    Mail::to('sofia@gmail.com')->send(new Reservation(request()->all()));
+    Mail::to('joao.tiago.abc@gmail.com')->send(new Reservation(request()->all()));
 
     return Redirect::to('/#book-a-table')->with('emailsent', 'Mensagem enviada com sucesso! Dentro de alguns minutos irá receber a confirmação da reserva. Obrigado pela preferência');
 
