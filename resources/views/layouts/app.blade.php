@@ -13,6 +13,8 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+{{--        <link href="assets/css/custom.css" rel="stylesheet">--}}
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
@@ -33,4 +35,6 @@
             </main>
         </div>
     </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </html>
