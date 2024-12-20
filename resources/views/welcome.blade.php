@@ -49,8 +49,8 @@
             </div>
             <div class="languages d-none d-md-flex align-items-center">
                 <ul>
-                    <li>En</li>
-                    <li><a href="#">Pt</a></li>
+                    <li><a href="{{ route('switchLanguage', 'pt') }}">Pt</a></li>
+                    <li><a href="{{ route('switchLanguage', 'en') }}">En</a></li>
                     <li><a href="/login">Login</a></li>
                 </ul>
             </div>
@@ -68,16 +68,16 @@
 
             <nav id="navmenu" class="navmenu">
                 <ul>
-                    <li><a href="#hero" class="active">Home<br></a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#menu">Menu</a></li>
-                    <li><a href="#gallery">Gallery</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#hero" class="active">{{ __('welcome.home') }}<br></a></li>
+                    <li><a href="#about">{{ __('welcome.about') }}</a></li>
+                    <li><a href="#menu">{{ __('welcome.menu') }}</a></li>
+                    <li><a href="#gallery">{{ __('welcome.gallery') }}</a></li>
+                    <li><a href="#contact">{{ __('welcome.contact') }}</a></li>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
 
-            <a class="btn-book-a-table d-none d-xl-block" href="#book-a-table">Book a Table</a>
+            <a class="btn-book-a-table d-none d-xl-block" href="#book-a-table">{{ __('welcome.booktable') }}</a>
 
 
         </div>
@@ -98,11 +98,17 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 d-flex flex-column align-items-center align-items-lg-start">
-                    <h2 data-aos="fade-up" data-aos-delay="100"><span>Fonte do Vale</span> Restaurant</h2>
-                    <p data-aos="fade-up" data-aos-delay="200">Your restaurant in Aljezur!</p>
+                    @if(App::getLocale() == 'pt')
+                        <h2 data-aos="fade-up" data-aos-delay="100"> {{ __('welcome.restaurant') }} <span>{{ __('welcome.welcome') }}</span></h2>
+                    @else(App::getLocale() == 'en')
+                        <h2 data-aos="fade-up" data-aos-delay="100"><span>{{ __('welcome.welcome') }}</span> {{ __('welcome.restaurant') }}</h2>
+                    @endif
+
+                    <p data-aos="fade-up" data-aos-delay="200">{{ __('welcome.greeting') }}</p>
+
                     <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
-                        <a href="#menu" class="cta-btn">Our Menu</a>
-                        <a href="#book-a-table" class="cta-btn">Book a Table</a>
+                        <a href="#menu" class="cta-btn">{{ __('welcome.ourmenu') }}</a>
+                        <a href="#book-a-table" class="cta-btn">{{ __('welcome.booktable') }}</a>
                     </div>
                 </div>
                 <div class="col-lg-4 d-flex align-items-center justify-content-center mt-5 mt-lg-0">

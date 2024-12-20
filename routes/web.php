@@ -38,9 +38,8 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/t', function () {
-    return view('test');
-});
+Route::get('lang/{locale}', [App\Http\Controllers\LanguageController::class, 'switchLanguage'])->name('switchLanguage');
+
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/search', [DashboardController::class, 'search'])->middleware(['auth', 'verified'])->name('search');
