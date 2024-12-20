@@ -111,9 +111,8 @@
                     </div>
 
                     <div class="w-full items-center text-center">
-                        <x-input-label for="is_menu" :value="__('Apenas serviço à carta')" />
-                        <x-text-input id="is_menu" name="is_menu" type="checkbox" class="items-center size-6 mt-4" :value="old('is_menu')" autofocus autocomplete="is_menu" />
-                        <x-input-error class="mt-2" :messages="$errors->get('is_menu')" />
+                        <input id="default-checkbox" @if(old('price') != null) checked @endif name="is_menu" type="checkbox" name="is_menu" class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Apenas menú</label>
                     </div>
 
                 </div>

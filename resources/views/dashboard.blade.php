@@ -30,6 +30,7 @@
 
                         <!-- Remaining Columns (Each 1/6) -->
                         <div class="basis-1/6 p-4">
+
                             <div class="flex items-center mb-4 mt-7">
                                 <input id="default-checkbox" @if($is_menu) checked @endif name="is_menu" type="checkbox" value="" class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                 <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Apenas menú</label>
@@ -38,6 +39,7 @@
                                 <input id="default-checkbox" @if($dates) checked @endif name="dates" type="checkbox" value="" class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                 <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Apenas com data</label>
                             </div>
+
 {{--                            <div class="w-full items-center text-center">--}}
 {{--                                <x-input-label for="is_menu" :value="__('Apenas Menu')" />--}}
 {{--                                <x-text-input id="is_menu" name="is_menu" type="checkbox" class="items-center size-6 mt-4" :value="old('is_menu', $is_menu)" autofocus autocomplete="is_menu" />--}}
@@ -83,13 +85,21 @@
 {{--                                <x-input-error class="mt-2" :messages="$errors->get('is_menu')" />--}}
 {{--                            </div>--}}
                         </div>
-                        <div class="basis-1/6 p-4">
-                            <!-- Create Section (20%) -->
-                            <div class="flex items-center justify-end h-full">
-                                <a class="px-4 py-2 rounded-lg hover:text-blue-600 cursor-pointer text-white" href="/food/create">
-                                    <i class="bi bi-plus"></i> {{ __("Novo Prato") }}
-                                </a>
-                            </div></div>
+                        <div class="basis-1/6 p-4 flex flex-col justify-center items-center space-y-3">
+                            <a
+                                href="{{ url('/food/create') }}"
+                                class="w-40 p-2 text-center text-sm font-medium rounded bg-black text-white"
+                            >
+                                <i class="bi bi-plus"></i> Adicionar Prato
+                            </a>
+                            <a
+                                href="{{ url('/clear-dates') }}"
+                                class="w-40 p-2 text-center text-sm font-medium rounded bg-black text-white"
+                            >
+                                Limpar todas as datas
+                            </a>
+                        </div>
+
                     </div>
 
                     <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">

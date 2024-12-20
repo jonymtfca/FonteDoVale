@@ -64,7 +64,7 @@ class FoodController extends Controller
         $food->price = $request->price;
         $food->half_price = $request->half_price;
         $food->type = $request->type;
-        $food->is_menu = 1;
+        $food->is_menu = $request->is_menu == "on";
 
         $food->save();
 
@@ -98,7 +98,7 @@ class FoodController extends Controller
      */
     public function update(Request $request)
     {
-//        return $request->is_menu == "0" ? 1 : 0;
+//        return $request->all();
 
         $attributes = $request->validate([
             'name_pt' => ['required'],
@@ -126,7 +126,7 @@ class FoodController extends Controller
         $food->price = $request->price;
         $food->half_price = $request->half_price;
         $food->type = $request->type;
-        $food->is_menu = $request->is_menu == "0";
+        $food->is_menu = $request->is_menu == "on";
 
         $food->save();
 
