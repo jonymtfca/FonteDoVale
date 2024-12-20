@@ -92,7 +92,7 @@
     <section id="hero" class="hero section dark-background">
 
 
-            <img src="assets/img/home_black.png" id="home_img" alt="" data-aos="fade-in" class="homebg">
+            <img src="assets/img/sofia.jpeg" id="home_img" alt="" data-aos="fade-in" class="homebg">
 
 
         <div class="container">
