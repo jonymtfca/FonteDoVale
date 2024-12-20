@@ -100,7 +100,7 @@
                 <div class="col-lg-8 d-flex flex-column align-items-center align-items-lg-start">
                     @if(App::getLocale() == 'pt')
                         <h2 data-aos="fade-up" data-aos-delay="100"> {{ __('welcome.restaurant') }} <span>{{ __('welcome.welcome') }}</span></h2>
-                    @else(App::getLocale() == 'en')
+                    @else
                         <h2 data-aos="fade-up" data-aos-delay="100"><span>{{ __('welcome.welcome') }}</span> {{ __('welcome.restaurant') }}</h2>
                     @endif
 
@@ -136,13 +136,17 @@
                     @foreach($foodsGroupedByDate as $date => $foods)
                         <div class="col-2 text-center" data-aos="fade-up" data-aos-delay="100">
                             <div class="content">
-{{--                                <h5>{{ \Carbon\Carbon::parse($date)->format('l, d F Y') }}</h5> <!-- Display formatted date -->--}}
-                                <h6>{{ \Carbon\Carbon::parse($date)->locale('pt_PT')->isoFormat('dddd, D [de] MMMM [de] YYYY') }}</h6> <!-- Date in PT-PT -->
+                                @if(App::getLocale() == 'pt')
+                                    <h6>{{ \Carbon\Carbon::parse($date)->locale('pt_PT')->isoFormat('dddd, D [de] MMMM [de] YYYY') }}</h6> <!-- Date in PT-PT -->
+                                @else
+                                    <h6>{{ \Carbon\Carbon::parse($date)->format('l, d F Y') }}</h6> <!-- Display formatted date -->
+                                @endif
+
                                 <ul class="list-group pt-4">
                                     @foreach($foods as $food)
                                         <li class="list-group-item li_cst">
                                             <img src="{{ asset('storage/food/'.$food->path)  }}" alt="{{ $food->name }}" class=" rounded-circle" style="height: 30px; width: 30px;"> <!-- Food image -->
-                                            <span class="small">{{ $food->name_pt }}</span>
+                                            <span class="small">@if(App::getLocale() == 'pt'){{ $food->name_pt }} @else {{ $food->name_pt }}@endif</span>
                                         </li>
                                     @endforeach
                                 </ul>
