@@ -49,8 +49,8 @@
             </div>
             <div class="languages d-none d-md-flex align-items-center">
                 <ul>
-                    <li><a href="{{ route('switchLanguage', 'pt') }}">Pt</a></li>
-                    <li><a href="{{ route('switchLanguage', 'en') }}">En</a></li>
+                    <li><a href="{{ route('switchLanguage', 'pt') }}">PT</a></li>
+                    <li><a href="{{ route('switchLanguage', 'en') }}">EN</a></li>
                     <li><a href="/login">Login</a></li>
                 </ul>
             </div>
@@ -92,7 +92,7 @@
     <section id="hero" class="hero section dark-background">
 
 
-            <img src="assets/img/sofia.jpeg" id="home_img" alt="" data-aos="fade-in" class="homebg">
+            <img src="assets/img/home_black.png" id="home_img" alt="" data-aos="fade-in" class="homebg">
 
 
         <div class="container">
@@ -119,19 +119,20 @@
 
     </section><!-- /Hero Section -->
 
+    @if($foodsGroupedByDate->isNotEmpty())
+
     <!-- Why Us Section -->
     <section id="why-us" class="why-us section">
 
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
-            <h2>This week</h2>
-            <p>Check our courses for the current week</p>
+            <h2>{{ __('welcome.thisweek') }}</h2>
+            <p>{{ __('welcome.courses') }}</p>
         </div><!-- End Section Title -->
 
         <div class="container">
 
             <div class="row g-4">
-
 
                     @foreach($foodsGroupedByDate as $date => $foods)
                         <div class="col-2 text-center" data-aos="fade-up" data-aos-delay="100">
@@ -160,13 +161,15 @@
 
     </section><!-- /Why Us Section -->
 
+    @endif
+
     <!-- Book A Table Section -->
     <section id="book-a-table" class="book-a-table section">
 
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
-            <h2>RESERVATION</h2>
-            <p>Book a Table</p>
+            <h2>{{ __('welcome.reservationcaps') }}</h2>
+            <p>{{ __('welcome.booktable') }}</p>
         </div><!-- End Section Title -->
 
         <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -177,27 +180,27 @@
                     @csrf
                 <div class="row gy-4">
                     <div class="col-lg-4 col-md-6">
-                        <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required="">
+                        <input type="text" name="name" class="form-control" id="name" placeholder="{{ __('welcome.yourname') }}" required="">
                     </div>
                     <div class="col-lg-4 col-md-6">
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required="">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="{{ __('welcome.youremail') }}" required="">
                     </div>
                     <div class="col-lg-4 col-md-6">
-                        <input type="text" class="form-control" name="phone" id="phone" placeholder="Your Phone" required="">
+                        <input type="text" class="form-control" name="phone" id="phone" placeholder="{{ __('welcome.yourephone') }}" required="">
                     </div>
                     <div class="col-lg-4 col-md-6">
-                        <input type="date" name="date" class="form-control" id="date" placeholder="Date" required="">
+                        <input type="date" name="date" class="form-control" id="date" placeholder="{{ __('welcome.date') }}" required="">
                     </div>
                     <div class="col-lg-4 col-md-6">
-                        <input type="time" class="form-control" name="time" id="time" placeholder="Time" required="">
+                        <input type="time" class="form-control" name="time" id="time" placeholder="{{ __('welcome.time') }}" required="">
                     </div>
                     <div class="col-lg-4 col-md-6">
-                        <input type="number" class="form-control" name="people" id="people" placeholder="# of people" required="">
+                        <input type="number" class="form-control" name="people" id="people" placeholder="{{ __('welcome.people') }}" required="">
                     </div>
                 </div>
 
                 <div class="form-group mt-3">
-                    <textarea class="form-control" name="message" rows="5" placeholder="Message"></textarea>
+                    <textarea class="form-control" name="message" rows="5" placeholder="{{ __('welcome.message') }}"></textarea>
                 </div>
 
                 @if(session('emailsent'))
@@ -210,7 +213,7 @@
                     <div class="loading">Loading</div>
                     <div class="error-message"></div>
                     <div class="sent-message">Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!</div>
-                    <button type="submit">Book a Table</button>
+                    <button type="submit">{{ __('welcome.booktable') }}</button>
                 </div>
             </form><!-- End Reservation Form -->
 
@@ -229,21 +232,21 @@
                 </div>
                 <div class="col-lg-6 order-2 order-lg-1 content">
 
-                    <h3 class="pb-4">Authentic Flavors of Aljezur</h3>
+                    <h3 class="pb-4">{{ __('welcome.head1') }}</h3>
 
                     <p class="fst-italic pb-4">
-                        Nestled in the heart of Aljezur, Algarve, our restaurant offers an unforgettable dining experience where the freshest local ingredients meet traditional Portuguese cuisine.
+                        {{ __('welcome.p1') }}
                     </p>
                     <ul>
-                        <li><i class="bi bi-check2-all"></i> <span>Fresh, locally sourced ingredients</span></li>
-                        <li><i class="bi bi-check2-all"></i> <span>Traditional Portuguese cuisine:</span></li>
-                        <li><i class="bi bi-check2-all"></i> <span>Scenic dining experience:</span></li>
+                        <li><i class="bi bi-check2-all"></i> <span>{{ __('welcome.p2') }}</span></li>
+                        <li><i class="bi bi-check2-all"></i> <span>{{ __('welcome.p3') }}</span></li>
+                        <li><i class="bi bi-check2-all"></i> <span>{{ __('welcome.p4') }}</span></li>
                     </ul>
                     <p class="pt-4">
-                        Surrounded by the natural beauty of the southern coast, we provide a perfect setting for both casual meals and special occasions.Whether you're enjoying our signature octopus rice or indulging in a rich almond dessert, every bite is crafted with care and attention to detail. Our chefs take pride in using only the highest quality ingredients, sourced from local farmers and fishermen, to bring you the best the Algarve has to offer.
+                        {{ __('welcome.p5') }}
                     </p>
                     <p class="pt-4">
-                        At Fonte do Vale, we believe in the joy of gathering around the table, savoring fresh, locally-sourced ingredients, and creating memories with every bite. Whether you're here for a special celebration or a cozy night out, our team is dedicated to making your visit unforgettable. Join us and let the flavors tell their story — we can’t wait to serve you!
+                        {{ __('welcome.p6') }}
                     </p>
                 </div>
             </div>
@@ -257,8 +260,8 @@
 
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
-            <h2>Menu</h2>
-            <p>Check Our Tasty Menu</p>
+            <h2>{{ __('welcome.menu') }}</h2>
+            <p>{{ __('welcome.tasty') }}</p>
         </div><!-- End Section Title -->
 
         <div class="container isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
@@ -266,10 +269,13 @@
             <div class="row" data-aos="fade-up" data-aos-delay="100">
                 <div class="col-lg-12 d-flex justify-content-center">
                     <ul class="menu-filters isotope-filters">
-                        <li data-filter="*" class="filter-active">All</li>
-                        <li data-filter=".filter-1">Starters</li>
-                        <li data-filter=".filter-2">Principal</li>
-                        <li data-filter=".filter-3">Desert</li>
+                        <li data-filter="*" class="filter-active">{{ __('welcome.filter1') }}</li>
+                        <li data-filter=".filter-1">{{ __('welcome.filter2') }}</li>
+                        <li data-filter=".filter-2">{{ __('welcome.filter3') }}</li>
+                        <li data-filter=".filter-3">{{ __('welcome.filter4') }}</li>
+                        <li data-filter=".filter-4">{{ __('welcome.filter5') }}</li>
+                        <li data-filter=".filter-5">{{ __('welcome.filter6') }}</li>
+                        <li data-filter=".filter-6">{{ __('welcome.filter7') }}</li>
                     </ul>
                 </div>
             </div><!-- Menu Filters -->
@@ -281,7 +287,7 @@
                 <div class="col-lg-6 menu-item isotope-item filter-{{ $m->type }}">
                     <img src="{{ asset('storage/food/'.$m->path)  }}" class="menu-img" alt="">
                     <div class="menu-content">
-                        <a href="">{{ $m->name_pt }}</a><span>@if($m->half_price != null) {{ $m->half_price }} / @endif {{ $m->price }}</span>
+                        <a href="">{{ $m->name_pt }}</a><span>@if($m->half_price != null) {{ $m->half_price }} € / @endif {{ $m->price }} €</span>
                     </div>
                     <div class="menu-ingredients">
                         {{ $m->ingredients_pt }}
@@ -289,16 +295,6 @@
                 </div><!-- Menu Item -->
 
                 @endforeach
-
-{{--                <div class="col-lg-6 menu-item isotope-item filter-test">--}}
-{{--                    <img src="assets/img/menu/lobster-roll.jpg" class="menu-img" alt="">--}}
-{{--                    <div class="menu-content">--}}
-{{--                        <a href="#">Lobster Roll</a><span>$12.95</span>--}}
-{{--                    </div>--}}
-{{--                    <div class="menu-ingredients">--}}
-{{--                        Plump lobster meat, mayo and crisp lettuce on a toasted bulky roll--}}
-{{--                    </div>--}}
-{{--                </div><!-- Menu Item -->--}}
 
             </div><!-- Menu Container -->
 
@@ -312,8 +308,8 @@
 
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
-            <h2>Gallery</h2>
-            <p>Some photos from Our Restaurant</p>
+            <h2>{{ __('welcome.gallery') }}</h2>
+            <p>{{ __('welcome.photos') }}</p>
         </div><!-- End Section Title -->
 
         <div class="container-fluid" data-aos="fade-up" data-aos-delay="100">
@@ -395,8 +391,8 @@
 
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
-            <h2>Contact</h2>
-            <p>Contact Us</p>
+            <h2>{{ __('welcome.contact') }}</h2>
+            <p>{{ __('welcome.contactus') }}</p>
         </div><!-- End Section Title -->
 
         <div class="mb-5" data-aos="fade-up" data-aos-delay="200">
@@ -413,7 +409,7 @@
                     <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
                         <i class="bi bi-geo-alt flex-shrink-0"></i>
                         <div>
-                            <h3>Location</h3>
+                            <h3>{{ __('welcome.location') }}</h3>
                             <p>Urbanização Vale da Telha 1 3, 8670-156 Aljezur</p>
                         </div>
                     </div><!-- End Info Item -->
@@ -421,15 +417,15 @@
                     <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
                         <i class="bi bi-calendar flex-shrink-0"></i>
                         <div>
-                            <h3>Open Hours</h3>
-                            <p>Tuesday-Sunday:<br>10:00 AM - 23:00 PM</p>
+                            <h3>{{ __('welcome.openhours') }}</h3>
+                            <p>{{ __('welcome.days') }}<br>10:00 AM - 00:00 PM</p>
                         </div>
                     </div><!-- End Info Item -->
 
                     <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
                         <i class="bi bi-telephone flex-shrink-0"></i>
                         <div>
-                            <h3>Call Us</h3>
+                            <h3>{{ __('welcome.callus') }}</h3>
                             <p>+351 282 997 334</p>
                         </div>
                     </div><!-- End Info Item -->
@@ -437,7 +433,7 @@
                     <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="500">
                         <i class="bi bi-envelope flex-shrink-0"></i>
                         <div>
-                            <h3>Email Us</h3>
+                            <h3>{{ __('welcome.callus') }}</h3>
                             <p>rfontedovale@gmail.com</p>
                         </div>
                     </div><!-- End Info Item -->
@@ -452,19 +448,19 @@
                         <div class="row gy-4">
 
                             <div class="col-md-6">
-                                <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+                                <input type="text" name="name" class="form-control" placeholder="{{ __('welcome.yourname') }}" required="">
                             </div>
 
                             <div class="col-md-6 ">
-                                <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
+                                <input type="email" class="form-control" name="email" placeholder="{{ __('welcome.youremail') }}" required="">
                             </div>
 
                             <div class="col-md-12">
-                                <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
+                                <input type="text" class="form-control" name="subject" placeholder="{{ __('welcome.subject') }}" required="">
                             </div>
 
                             <div class="col-md-12">
-                                <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
+                                <textarea class="form-control" name="message" rows="6" placeholder="{{ __('welcome.message') }}" required=""></textarea>
                             </div>
 
                             <div class="col-md-12 text-center">
@@ -472,7 +468,7 @@
                                 <div class="error-message"></div>
                                 <div class="sent-message">Your message has been sent. Thank you!</div>
 
-                                <button type="submit">Send Message</button>
+                                <button type="submit">{{ __('welcome.sendmessage') }}</button>
                             </div>
 
                         </div>
@@ -505,24 +501,17 @@
             </div>
 
             <div class="col-lg-2 col-md-3 footer-links">
-                <h4>Useful Links</h4>
+                <h4>Links</h4>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About us</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Terms of service</a></li>
-                    <li><a href="#">Privacy policy</a></li>
+                    <li><a href="/Login">Login</a></li>
                 </ul>
             </div>
 
             <div class="col-lg-2 col-md-3 footer-links">
-                <h4>Useful Links</h4>
+                <h4>{{ __('welcome.language') }}</h4>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About us</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Terms of service</a></li>
-                    <li><a href="#">Privacy policy</a></li>
+                    <li><a href="#">PT</a></li>
+                    <li><a href="#">EN</a></li>
                 </ul>
             </div>
 

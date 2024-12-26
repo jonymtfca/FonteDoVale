@@ -95,8 +95,11 @@
                                 <x-input-label for="type" :value="__('Tipo')" />
                                 <x-forms.select label="" name="type" :value="old('type', $food->type)">
                                     <option value="1" @if(old('type', $food->type) == 1) selected @endif>Entrada</option>
-                                    <option value="2" @if(old('type', $food->type) == 2) selected @endif>Prato Principal</option>
-                                    <option value="3" @if(old('type', $food->type) == 3) selected @endif>Sobremesa</option>
+                                    <option value="2" @if(old('type', $food->type) == 2) selected @endif>Carne</option>
+                                    <option value="3" @if(old('type', $food->type) == 3) selected @endif>Peixe</option>
+                                    <option value="4" @if(old('type', $food->type) == 4) selected @endif>Hambúrguer</option>
+                                    <option value="5" @if(old('type', $food->type) == 5) selected @endif>Salada</option>
+                                    <option value="6" @if(old('type', $food->type) == 6) selected @endif>Sobremesa</option>
                                 </x-forms.select>
 
 

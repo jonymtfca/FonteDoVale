@@ -104,8 +104,11 @@
                         <x-input-label for="type" :value="__('Tipo')"  />
                         <x-forms.select label="" name="type" :value="old('type')">
                             <option value="1">Entrada</option>
-                            <option value="2">Prato Principal</option>
-                            <option value="3">Sobremesa</option>
+                            <option value="2">Carne</option>
+                            <option value="3">Peixe</option>
+                            <option value="4">Hambúrguer</option>
+                            <option value="5">Salada</option>
+                            <option value="6">Sobremesa</option>
                         </x-forms.select>
 
                     </div>
