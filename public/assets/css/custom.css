@@ -3,3 +3,7 @@ li.list-group-item.li_cst {
     color: white;
     border: 1px solid #726754;
 }
+
+.text-justify {
+    text-align: justify;
+}

@@ -234,7 +234,7 @@
 
                     <h3 class="pb-4">{{ __('welcome.head1') }}</h3>
 
-                    <p class="fst-italic pb-4">
+                    <p class="fst-italic pb-4 text-justify">
                         {{ __('welcome.p1') }}
                     </p>
                     <ul>
@@ -242,10 +242,10 @@
                         <li><i class="bi bi-check2-all"></i> <span>{{ __('welcome.p3') }}</span></li>
                         <li><i class="bi bi-check2-all"></i> <span>{{ __('welcome.p4') }}</span></li>
                     </ul>
-                    <p class="pt-4">
+                    <p class="pt-4 text-justify">
                         {{ __('welcome.p5') }}
                     </p>
-                    <p class="pt-4">
+                    <p class="pt-4 text-justify">
                         {{ __('welcome.p6') }}
                     </p>
                 </div>
@@ -285,7 +285,7 @@
                 @foreach($menu as $m)
 
                 <div class="col-lg-6 menu-item isotope-item filter-{{ $m->type }}">
-                    <img src="{{ asset('storage/food/'.$m->path)  }}" class="menu-img" alt="">
+{{--                    <img src="{{ asset('storage/food/'.$m->path)  }}" class="menu-img" alt="">--}}
                     <div class="menu-content">
                         <a href="">{{ $m->name_pt }}</a><span>@if($m->half_price != null) {{ $m->half_price }} € / @endif {{ $m->price }} €</span>
                     </div>

@@ -45,12 +45,14 @@ class FoodController extends Controller
             'ingredients_pt' => ['required'],
             'ingredients_en' => ['required'],
             'type' => ['required', 'integer'],
-            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+//            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
         ]);
 
 //        return $attributes;
 
-        $path = $request->file('image')->store('/food');
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('/food');
+        }
 //        dd($path, substr($path, 5));
 
         $food = new Food();
@@ -60,7 +62,7 @@ class FoodController extends Controller
         $food->ingredients_pt = $request->ingredients_pt;
         $food->ingredients_en = $request->ingredients_en;
 //        $food->imgname = $request->file('image')->getClientOriginalName();
-        $food->path = substr($path, 5);
+        $food->path = $request->hasFile('image')? substr($path, 5):"";
         $food->price = $request->price;
         $food->half_price = $request->half_price;
         $food->type = $request->type;
@@ -106,7 +108,7 @@ class FoodController extends Controller
             'ingredients_pt' => ['required'],
             'ingredients_en' => ['required'],
             'type' => ['required'],
-            'image' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+//            'image' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
         ]);
 
         if ($request->hasFile('image')) {
