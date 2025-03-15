@@ -64,13 +64,13 @@
 
                             <div class="w-full">
                                 <x-input-label for="ingredients_pt" :value="__('Ingredientes em PT')" />
-                                <x-text-input id="ingredients_pt" name="ingredients_pt" type="text" class="mt-1 block w-full" :value="old('ingredients_pt', $food->ingredients_pt)" required autofocus autocomplete="ingredients_pt" />
+                                <x-text-input id="ingredients_pt" name="ingredients_pt" type="text" class="mt-1 block w-full" :value="old('ingredients_pt', $food->ingredients_pt)"  autofocus autocomplete="ingredients_pt" />
                                 <x-input-error class="mt-2" :messages="$errors->get('ingredients_pt')" />
                             </div>
 
                             <div class="w-full">
                                 <x-input-label for="ingredients_en" :value="__('Ingredientes em EN')" />
-                                <x-text-input id="ingredients_en" name="ingredients_en" type="text" class="mt-1 block w-full" :value="old('ingredients_en', $food->ingredients_en)" required autofocus autocomplete="ingredients_en" />
+                                <x-text-input id="ingredients_en" name="ingredients_en" type="text" class="mt-1 block w-full" :value="old('ingredients_en', $food->ingredients_en)"  autofocus autocomplete="ingredients_en" />
                                 <x-input-error class="mt-2" :messages="$errors->get('ingredients_en')" />
                             </div>
 
@@ -87,7 +87,7 @@
 
                             <div class="w-full">
                                 <x-input-label for="price" :value="__('Preço dose')" />
-                                <x-text-input id="price" name="price" type="text" class="mt-1 block w-full" :value="old('price', $food->price)" required autofocus autocomplete="price" />
+                                <x-text-input id="price" name="price" type="text" class="mt-1 block w-full" :value="old('price', $food->price)"  autofocus autocomplete="price" />
                                 <x-input-error class="mt-2" :messages="$errors->get('price')" />
                             </div>
                             <div class="w-full">
