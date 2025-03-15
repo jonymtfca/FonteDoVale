@@ -42,8 +42,8 @@ class FoodController extends Controller
         $attributes = $request->validate([
             'name_pt' => ['required'],
             'name_en' => ['required'],
-            'ingredients_pt' => ['required'],
-            'ingredients_en' => ['required'],
+//            'ingredients_pt' => ['required'],
+//            'ingredients_en' => ['required'],
             'type' => ['required', 'integer'],
 //            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
         ]);
@@ -105,8 +105,8 @@ class FoodController extends Controller
         $attributes = $request->validate([
             'name_pt' => ['required'],
             'name_en' => ['required'],
-            'ingredients_pt' => ['required'],
-            'ingredients_en' => ['required'],
+//            'ingredients_pt' => ['required'],
+//            'ingredients_en' => ['required'],
             'type' => ['required'],
 //            'image' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
         ]);
