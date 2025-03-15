@@ -113,11 +113,16 @@
                             </button>
                         </div>
 
+                        <div class="w-full text-white mt-3">
+                            Visitas ao site: {{ Cache::get('site_visits', 0) }}
+                        </div>
+
                     </div>
 
                 </div>
 
             </form>
+
 
             <div class="p-6 bg-white dark:bg-gray-800 mt-3 rounded-lg">
 
