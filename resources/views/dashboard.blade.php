@@ -131,7 +131,11 @@
                         <div class="container w-full rounded-lg bg-white dark:bg-gray-800 text-slate-900 ring-1 shadow-xl shadow-black/5 ring-slate-700/10 mb-4">
                             <div class="flex items-center p-4 pb-0 w-full border-b border-slate-700/10">
                                 <!-- Image Section -->
-                                <img src="storage/food/{{ $f->path }}" alt="" class="size-16 flex-none rounded-full">
+{{--                                <img src="storage/food/{{ $f->path }}" alt="" class="size-16 flex-none rounded-full">--}}
+                                <img src="{{ $f->path ? asset('storage/food/' . $f->path) : 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2048px-No_image_available.svg.png' }}"
+                                     alt="Food Image"
+                                     class="size-16 flex-none rounded-full">
+
 
                                 <!-- Content Section -->
                                 <div class="ml-4 flex-auto">
