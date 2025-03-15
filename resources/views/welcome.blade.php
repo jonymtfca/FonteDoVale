@@ -147,7 +147,7 @@
                                     @foreach($foods as $food)
                                         <li class="list-group-item li_cst">
                                             <img src="{{ asset('storage/food/'.$food->path)  }}" alt="{{ $food->name }}" class=" rounded-circle" style="height: 30px; width: 30px;"> <!-- Food image -->
-                                            <span class="small">@if(App::getLocale() == 'pt'){{ $food->name_pt }} @else {{ $food->name_pt }}@endif</span>
+                                            <span class="small">@if(App::getLocale() == 'pt'){{ $food->name_pt }} @else {{ $food->name_en }}@endif</span>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -287,10 +287,10 @@
                 <div class="col-lg-6 menu-item isotope-item filter-{{ $m->type }}">
 {{--                    <img src="{{ asset('storage/food/'.$m->path)  }}" class="menu-img" alt="">--}}
                     <div class="menu-content">
-                        <a href="">{{ $m->name_pt }}</a><span>@if($m->half_price != null) {{ $m->half_price }} € / @endif {{ $m->price }} €</span>
+                        <a href="">@if(App::getLocale() == 'pt'){{ $m->name_pt }} @else {{ $m->name_en }}@endif</a><span>@if($m->half_price != null) {{ $m->half_price }} € / @endif {{ $m->price }} €</span>
                     </div>
                     <div class="menu-ingredients">
-                        {{ $m->ingredients_pt }}
+                        @if(App::getLocale() == 'pt'){{ $m->ingredients_pt }} @else {{ $m->ingredients_en }}@endif
                     </div>
                 </div><!-- Menu Item -->
 

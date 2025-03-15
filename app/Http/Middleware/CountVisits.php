@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\App;
 
 class CountVisits
 {
@@ -24,7 +25,7 @@ class CountVisits
         }
 
 
-        //dd(Cache::get('site_visits'));
+//        dd(App::getLocale() == 'pt');
 
         return $next($request);
     }
