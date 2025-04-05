@@ -2,7 +2,7 @@
 
     <x-slot name="header">
         <div class="flex items-center space-x-4">
-            <img src="{{ asset('storage/food/'.$food->path)  }}" alt="" class="size-16 flex-none rounded-full">
+            <img src="{{ $food->path ? asset('storage/food/'.$food->path) : 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2048px-No_image_available.svg.png' }}" alt="" class="size-16 flex-none rounded-full">
             <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                 {{ $food->name_pt }} / {{ $food->name_en }}
             </h2>
@@ -32,7 +32,7 @@
                             <div class="w-5/6">
                                 <div class="flex items-center space-x-6 py-4">
                                     <div class="shrink-0">
-                                        <img class="h-16 w-16 object-cover rounded-full" id="file-ip-1-preview" src="{{ asset('storage/food/'.$food->path)  }}" alt="Current profile photo" />
+                                        <img class="h-16 w-16 object-cover rounded-full" id="file-ip-1-preview" src="{{ $food->path ? asset('storage/food/'.$food->path) : 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/2048px-No_image_available.svg.png' }}" alt="Current profile photo" />
                                     </div>
                                     <label class="block">
                                         <span class="sr-only">Seleciona a imagem</span>
@@ -90,6 +90,16 @@
                                 <x-text-input id="price" name="price" type="text" class="mt-1 block w-full" :value="old('price', $food->price)"  autofocus autocomplete="price" />
                                 <x-input-error class="mt-2" :messages="$errors->get('price')" />
                             </div>
+
+                            <!-- New Order Input -->
+                            <div class="w-full">
+                                <x-input-label for="order" :value="__('Ordem')" />
+                                <x-text-input id="order" name="order" type="number" class="mt-1 block w-full"
+                                              :value="old('order', $food->order)" required autofocus autocomplete="order" />
+                                <x-input-error class="mt-2" :messages="$errors->get('order')" />
+                            </div>
+
+
                             <div class="w-full">
 
                                 <x-input-label for="type" :value="__('Tipo')" />

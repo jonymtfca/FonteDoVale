@@ -100,6 +100,14 @@
                         <x-input-error class="mt-2" :messages="$errors->get('price')" />
                     </div>
 
+                    <!-- New Order Input -->
+                    <div class="w-full">
+                        <x-input-label for="order" :value="__('Ordem')" />
+                        <x-text-input id="order" name="order" type="number" class="mt-1 block w-full"
+                                      :value="old('order')" required autofocus autocomplete="order" />
+                        <x-input-error class="mt-2" :messages="$errors->get('order')" />
+                    </div>
+
                     <div class="w-full">
                         <x-input-label for="type" :value="__('Tipo')"  />
                         <x-forms.select label="" name="type" :value="old('type')">

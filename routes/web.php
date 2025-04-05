@@ -22,6 +22,7 @@ Route::get('/', function () {
 
     $menu = Food::query()
         ->where('is_menu', true)
+        ->orderBy('order','ASC')
         ->get();
 
     // Group foods by date

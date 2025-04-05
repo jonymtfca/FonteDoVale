@@ -67,6 +67,7 @@ class FoodController extends Controller
         $food->half_price = $request->half_price;
         $food->type = $request->type;
         $food->is_menu = $request->is_menu == "on";
+        $food->order = $request->order;
 
         $food->save();
 
@@ -129,6 +130,7 @@ class FoodController extends Controller
         $food->half_price = $request->half_price;
         $food->type = $request->type;
         $food->is_menu = $request->is_menu == "on";
+        $food->order = $request->order;
 
         $food->save();
 
