@@ -116,7 +116,7 @@
                             <option value="3">Peixe</option>
                             <option value="4">Hambúrguer</option>
                             <option value="5">Salada</option>
-                            <option value="6">Sobremesa</option>
+                            <option value="6">Outros</option>
                         </x-forms.select>
 
                     </div>

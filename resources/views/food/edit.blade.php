@@ -109,7 +109,7 @@
                                     <option value="3" @if(old('type', $food->type) == 3) selected @endif>Peixe</option>
                                     <option value="4" @if(old('type', $food->type) == 4) selected @endif>Hambúrguer</option>
                                     <option value="5" @if(old('type', $food->type) == 5) selected @endif>Salada</option>
-                                    <option value="6" @if(old('type', $food->type) == 6) selected @endif>Sobremesa</option>
+                                    <option value="6" @if(old('type', $food->type) == 6) selected @endif>Outros</option>
                                 </x-forms.select>
 
 

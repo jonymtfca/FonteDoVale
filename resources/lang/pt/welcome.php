@@ -39,7 +39,7 @@ return [
     'filter4' => 'Peixe',
     'filter5' => 'Hambúrgueres',
     'filter6' => 'Saladas',
-    'filter7' => 'Sobremesas',
+    'filter7' => 'Outros',
     'photos' => 'Algumas fotos do Nosso Restaurante',
     'location' => 'Localização',
     'openhours' => 'Horário de Funcionamento',

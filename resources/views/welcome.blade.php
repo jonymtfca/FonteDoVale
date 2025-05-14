@@ -264,7 +264,7 @@
             <p>{{ __('welcome.tasty') }}</p>
         </div><!-- End Section Title -->
 
-        <div class="container isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+        <div class="container isotope-layout" data-default-filter="*" data-layout="fitRows" data-sort="original-order">
 
             <div class="row" data-aos="fade-up" data-aos-delay="100">
                 <div class="col-lg-12 d-flex justify-content-center">

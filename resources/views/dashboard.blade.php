@@ -76,7 +76,7 @@
                                        name="type[]"
                                     {{ in_array(3, request('type', [])) ? 'checked' : '' }}
                                 >
-                                <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Sobremesa</label>
+                                <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Outros</label>
                             </div>
 
 {{--                            <div class="w-full items-center text-center">--}}

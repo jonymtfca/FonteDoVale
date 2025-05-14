@@ -39,7 +39,7 @@ return [
     'filter4' => 'Fish',
     'filter5' => 'Hamburgers',
     'filter6' => 'Salads',
-    'filter7' => 'Desert',
+    'filter7' => 'Others',
     'photos' => 'Some photos from Our Restaurant',
     'location' => 'Location',
     'openhours' => 'Open Hours',
