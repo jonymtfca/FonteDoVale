@@ -510,8 +510,8 @@
             <div class="col-lg-2 col-md-3 footer-links">
                 <h4>{{ __('welcome.language') }}</h4>
                 <ul>
-                    <li><a href="#">PT</a></li>
-                    <li><a href="#">EN</a></li>
+                    <li><a href="{{ route('switchLanguage', 'pt') }}">PT</a></li>
+                    <li><a href="{{ route('switchLanguage', 'en') }}">EN</a></li>
                 </ul>
             </div>
 
