@@ -64,16 +64,20 @@ Route::middleware('auth')->group(function () {
 
 Route::post('/reservation', function () {
 
+    $data = request()->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email',
+        'phone' => 'required|string|max:50',
+        'date' => 'required|date',
+        'time' => 'required',
+        'people' => 'required|integer|min:1',
+        'location' => 'required|in:interior,esplanada',
+        'message' => 'nullable|string',
+    ]);
 
-//    $atributes = request()->validate([
-//        'email' => 'required|email'
-//    ]);
-//    return $atributes;
+    Mail::to('rfontedovale@gmail.com')->send(new Reservation($data));
 
-
-    Mail::to('rfontedovale@gmail.com')->send(new Reservation(request()->all()));
-
-    return Redirect::to('/#book-a-table')->with('emailsent', 'Mensagem enviada com sucesso! Dentro de alguns minutos irá receber a confirmação da reserva. Obrigado pela preferência');
+    return Redirect::to('/#book-a-table')->with('emailsent', 'Mensagem enviada com sucesso! Confirmaremos a sua reserva assim que possível. Obrigado pela preferência');
 
 })->middleware(ProtectAgainstSpam::class);;
 

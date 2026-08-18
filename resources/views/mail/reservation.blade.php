@@ -7,6 +7,7 @@
     Data: {{ $request['date'] }}
     Hora: {{ $request['time'] }}
     Nº pessoas: {{ $request['people'] }}
+    Localização: {{ $request['location'] === 'esplanada' ? 'Esplanada' : 'Interior' }}
 
 
     Notas: {{ $request['message'] }}

@@ -1,0 +1,100 @@
+diff --git a/resources/lang/en/welcome.php b/resources/lang/en/welcome.php
+index e124ea4..d98ffd2 100644
+--- a/resources/lang/en/welcome.php
++++ b/resources/lang/en/welcome.php
+@@ -25,6 +25,10 @@
+     'date' => 'Data',
+     'time' => 'Hora',
+     'people' => '# of People',
++    'location_pref' => 'Indoor or Terrace',
++    'location_interior' => 'Indoor',
++    'location_terrace' => 'Terrace',
++    'reservation_disclaimer' => 'Note: your booking request is not automatically confirmed. It is subject to confirmation by the restaurant, who will contact you shortly.',
+     'head1' => 'Authentic Flavors of Aljezur',
+     'p1' => 'Nestled in the heart of Aljezur, Algarve, our restaurant offers an unforgettable dining experience where the freshest local ingredients meet traditional Portuguese cuisine.',
+     'p2' => 'Fresh, locally sourced ingredients',
+diff --git a/resources/lang/pt/welcome.php b/resources/lang/pt/welcome.php
+index 38269be..9627e6a 100644
+--- a/resources/lang/pt/welcome.php
++++ b/resources/lang/pt/welcome.php
+@@ -25,6 +25,10 @@
+     'date' => 'Data',
+     'time' => 'Hora',
+     'people' => '# de Pessoas',
++    'location_pref' => 'Interior ou Esplanada',
++    'location_interior' => 'Interior',
++    'location_terrace' => 'Esplanada',
++    'reservation_disclaimer' => 'Nota: o pedido de reserva não fica automaticamente confirmado. Está sujeito a confirmação por parte do restaurante, que entrará em contacto consigo brevemente.',
+     'head1' => 'Sabores Autênticos de Aljezur',
+     'p1' => 'Situado no coração de Aljezur, Algarve, o nosso restaurante oferece uma experiência gastronómica inesquecível, onde os ingredientes locais mais frescos se encontram com a cozinha tradicional portuguesa.',
+     'p2' => 'Ingredientes frescos e de origem local',
+diff --git a/resources/views/mail/reservation.blade.php b/resources/views/mail/reservation.blade.php
+index db8ea5a..f1ba349 100644
+--- a/resources/views/mail/reservation.blade.php
++++ b/resources/views/mail/reservation.blade.php
+@@ -7,6 +7,7 @@
+     Data: {{ $request['date'] }}
+     Hora: {{ $request['time'] }}
+     Nº pessoas: {{ $request['people'] }}
++    Localização: {{ $request['location'] === 'esplanada' ? 'Esplanada' : 'Interior' }}
+ 
+ 
+     Notas: {{ $request['message'] }}
+diff --git a/resources/views/welcome.blade.php b/resources/views/welcome.blade.php
+index 4a0f220..e082a49 100644
+--- a/resources/views/welcome.blade.php
++++ b/resources/views/welcome.blade.php
+@@ -197,12 +197,23 @@
+                     <div class="col-lg-4 col-md-6">
+                         <input type="number" class="form-control" name="people" id="people" placeholder="{{ __('welcome.people') }}" required="">
+                     </div>
++                    <div class="col-lg-4 col-md-6">
++                        <select class="form-control" name="location" id="location" required="">
++                            <option value="" selected disabled>{{ __('welcome.location_pref') }}</option>
++                            <option value="interior">{{ __('welcome.location_interior') }}</option>
++                            <option value="esplanada">{{ __('welcome.location_terrace') }}</option>
++                        </select>
++                    </div>
+                 </div>
+ 
+                 <div class="form-group mt-3">
+                     <textarea class="form-control" name="message" rows="5" placeholder="{{ __('welcome.message') }}"></textarea>
+                 </div>
+ 
++                <div class="form-text mt-3 text-center">
++                    <small>{{ __('welcome.reservation_disclaimer') }}</small>
++                </div>
++
+                 @if(session('emailsent'))
+                     <div class="alert alert-success mt-3 text-center">
+                         {{ session('emailsent') }}
+diff --git a/routes/web.php b/routes/web.php
+index e411cb7..b982146 100644
+--- a/routes/web.php
++++ b/routes/web.php
+@@ -64,14 +64,18 @@
+ 
+ Route::post('/reservation', function () {
+ 
++    $data = request()->validate([
++        'name' => 'required|string|max:255',
++        'email' => 'required|email',
++        'phone' => 'required|string|max:50',
++        'date' => 'required|date',
++        'time' => 'required',
++        'people' => 'required|integer|min:1',
++        'location' => 'required|in:interior,esplanada',
++        'message' => 'nullable|string',
++    ]);
+ 
+-//    $atributes = request()->validate([
+-//        'email' => 'required|email'
+-//    ]);
+-//    return $atributes;
+-
+-
+-    Mail::to('rfontedovale@gmail.com')->send(new Reservation(request()->all()));
++    Mail::to('rfontedovale@gmail.com')->send(new Reservation($data));
+ 
+     return Redirect::to('/#book-a-table')->with('emailsent', 'Mensagem enviada com sucesso! Dentro de alguns minutos irá receber a confirmação da reserva. Obrigado pela preferência');
+ 

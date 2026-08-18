@@ -188,19 +188,30 @@
                     <div class="col-lg-4 col-md-6">
                         <input type="text" class="form-control" name="phone" id="phone" placeholder="{{ __('welcome.yourephone') }}" required="">
                     </div>
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-6 col-md-6">
                         <input type="date" name="date" class="form-control" id="date" placeholder="{{ __('welcome.date') }}" required="">
                     </div>
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-6 col-md-6">
                         <input type="time" class="form-control" name="time" id="time" placeholder="{{ __('welcome.time') }}" required="">
                     </div>
-                    <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-6 col-md-6">
                         <input type="number" class="form-control" name="people" id="people" placeholder="{{ __('welcome.people') }}" required="">
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <select class="form-control" name="location" id="location" required="">
+                            <option value="" selected disabled>{{ __('welcome.location_pref') }}</option>
+                            <option value="interior">{{ __('welcome.location_interior') }}</option>
+                            <option value="esplanada">{{ __('welcome.location_terrace') }}</option>
+                        </select>
                     </div>
                 </div>
 
                 <div class="form-group mt-3">
                     <textarea class="form-control" name="message" rows="5" placeholder="{{ __('welcome.message') }}"></textarea>
+                </div>
+
+                <div class="form-text mt-3 text-center accent-color">
+                    <small class="">{{ __('welcome.reservation_disclaimer') }}</small>
                 </div>
 
                 @if(session('emailsent'))
@@ -558,6 +569,16 @@
 
 <!-- Main JS File -->
 <script src="assets/js/main.js"></script>
+
+<script>
+    document.querySelectorAll('input[type="date"], input[type="time"]').forEach(input => {
+        input.addEventListener('click', function () {
+            if (this.showPicker) {
+                this.showPicker();
+            }
+        });
+    });
+</script>
 
 </body>
 
